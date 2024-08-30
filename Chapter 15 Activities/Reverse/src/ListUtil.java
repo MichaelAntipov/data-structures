@@ -12,7 +12,8 @@ public class ListUtil
     */
     public static void reverse(LinkedList<String> strings)
     {
-        ListIterator<String> iterator = strings.listIterator();        
+        
+            
 
     }
 }
