@@ -1,5 +1,4 @@
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -23,9 +22,14 @@ public class Sieve
             set.add(i);
         }
 
-        
+        for(int k =2; k< n; k++){
+            for(int i =2; i < n; i++){
+                set.remove(i*k);
+            }
+        }
 
-        for(int i = 2; i< n/2; i++ ){
+
+        /* for(int i = 2; i< n/2; i++ ){
             Iterator<Integer> iterator = set.iterator();
 
             while(iterator.hasNext()){
@@ -35,7 +39,7 @@ public class Sieve
                 }
             }
         }
-
+        */
         System.out.println(set);
 
 
