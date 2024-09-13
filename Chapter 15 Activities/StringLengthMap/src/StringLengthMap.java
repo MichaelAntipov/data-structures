@@ -1,5 +1,5 @@
-import java.util.*;
 import java.io.*;
+import java.util.*;
 /**
  * Read all words from a file and add them to a
  * map whose keys are word lengths and whose values
@@ -12,21 +12,47 @@ public class StringLengthMap
 {
     public static void main(String[] args) throws FileNotFoundException
     {
-        String filename = "src/test1.txt";
+        String filename = "Chapter 15 Activities\\StringLengthMap\\src\\test1.txt";
 
+        
+
+
+        Map<Integer, String> strlength = new HashMap<>();
+        Map<Integer, String> strlength1 = new HashMap<>();
+        //int len1 = 0;
         try (Scanner in = new Scanner(new File(filename)))
         {
 
             // Create your map here
             
-
+            
             while (in.hasNext())
             {
                 String word = clean(in.next());
                 Integer len = word.length();
+                
+                
+                if(strlength.get(len) == "" || strlength.get(len) == null){
+                    strlength.put(len,word);
+                }
+                else{
+                    String s = strlength.get(len);
+                    s = s +", " + word;
+                    strlength.put(len, s);
+                }
+                
+                   //len1 = len;
+                
+                /* else if(strlength.size() > 0){
+                    for(int i = 0; i < strlength.size(); i++){
+                        if(len == strlength.)
+                    }
+                }*/
 
                 // Update the map here
                 // Modify Worked Example 15.1
+
+
                 
 
 
@@ -38,6 +64,16 @@ public class StringLengthMap
         {
             System.out.println("Cannot open: " + filename);
         }
+
+        for(int i =0; i < 16;i++){
+            strlength1.put(i,strlength.get(i));
+        }
+
+        for(int i = 0; i< 16; i++){
+            if()
+                System.out.println(strlength1.get(i));
+        }
+        
     }
 
     public static String clean(String s)
