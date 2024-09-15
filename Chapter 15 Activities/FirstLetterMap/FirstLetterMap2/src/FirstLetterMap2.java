@@ -1,5 +1,5 @@
-import java.util.*;
 import java.io.*;
+import java.util.*;
 /**
  * Read all words from a file and add them to a map
  * whose keys are the first letters of the words and
@@ -8,17 +8,18 @@ import java.io.*;
  * alphabetical order. Update the map by modifying
  * Worked Example 15.1.
 */
-public class FirstLetterMap
+public class FirstLetterMap2
 {
     public static void main(String[] args)
     {
-        String filename = "src/test1.txt";
+        String filename = "Chapter 15 Activities\\FirstLetterMap\\FirstLetterMap2\\src\\test1.txt";
 
         try (Scanner in = new Scanner(new File(filename)))
         {
 
             // Create your map here
-            ...
+            Map<Character, Set<String>> map = new TreeMap<>();
+
 
             while (in.hasNext())
             {
@@ -27,14 +28,27 @@ public class FirstLetterMap
 
                 // Update the map here
                 // Modify Worked Example 15.1
-                . . .
+                if (map.containsKey(c))
+                {
+                    Set<String> existingSet = map.get(c);
+                    existingSet.add(word);
+                }
+                else
+                {
+                    Set<String> newSet = new TreeSet<>();
+                    newSet.add(word);
+                    map.put(c, newSet);
+                }
 
 
             }
 
             // Print the map here in this form
             // a: [a, able, aardvark]
-            . . .
+            for (Character key : map.keySet())
+            {
+                System.out.println(key + ": " + map.get(key));
+            }
         } catch (FileNotFoundException e)
         {
             System.out.println("Cannot open: " + filename);
