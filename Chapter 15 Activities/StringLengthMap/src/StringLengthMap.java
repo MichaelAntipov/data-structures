@@ -30,8 +30,13 @@ public class StringLengthMap
                 if (map.containsKey(len))
                 {
                     String existing = map.get(len);
-                    existing = existing + ", " + word;
-                    map.put(len, existing);
+
+                    
+
+                    if (!existing.contains(word + "," ) && !existing.contains(", " + word) && !existing.equals(word)) {
+                        existing = existing + ", " + word;
+                        map.put(len, existing);
+                    }
                 }
                 else
                 {

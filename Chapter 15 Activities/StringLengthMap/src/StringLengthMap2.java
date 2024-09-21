@@ -27,7 +27,15 @@ public class StringLengthMap2
 
                 // Update the map here
                 // Use the Java 8 merge() method
-                map.merge(len, word, (existingValue, newValue) -> existingValue + ", " + newValue);
+                // map.merge(len, word, (existingValue, newValue) -> existingValue + ", " + newValue);
+
+                map.merge(len, word, (existing, newWord) -> {
+                    if (!existing.contains(newWord + ",") && !existing.contains(", " + newWord) && !existing.equals(newWord)) {
+                        return existing + ", " + newWord;
+                    } else {
+                        return existing; 
+                    }
+                });
 
 
 
