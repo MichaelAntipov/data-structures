@@ -2,15 +2,15 @@ import java.util.Scanner;
 import java.util.Stack;
 
 /**
- * Class for reversing the order of words in sentences.
+ * Class for reversing the order of a sentence.
  */
 public class SentenceReverser
 {
     /**
-     * Reverses the words in each sentence of the given text.
+     * Reverses the given sentence.
      *
-     * @param sentence Sentence(s) to be reversed.
-     * @return Reversed sentence(s).
+     * @param sentence Sentence to be reversed.
+     * @return Reversed sentence.
      */
     public static String reverse(String sentence)
     {
