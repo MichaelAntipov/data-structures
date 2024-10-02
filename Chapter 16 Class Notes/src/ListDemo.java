@@ -11,7 +11,8 @@ public class ListDemo
         students.addFirst("Bijoux");
         students.addFirst("Jinan");
         students.addFirst("Andy");
+        System.out.println(students.contains("Arthur"));
 
-        System.out.println(students.toString());
+        System.out.println(students);
     }
 }
