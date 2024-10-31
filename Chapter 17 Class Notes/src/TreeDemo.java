@@ -10,8 +10,11 @@ public class TreeDemo
       BinaryTree t3 = new BinaryTree("Zara");
       BinaryTree t4 = new BinaryTree("Savannah");
 
-      BinaryTree tLeft = new BinaryTree("Peter", t4, null);  
-      BinaryTree tRight = new BinaryTree("Zara", null, null); 
+      BinaryTree emptyTree = new BinaryTree();
+   
+
+      BinaryTree tLeft = new BinaryTree("Peter", t1, emptyTree);  
+      BinaryTree tRight = new BinaryTree("Zara", t3, t4); 
       BinaryTree tRoot = new BinaryTree("Anne", tLeft, tRight); 
 
    
