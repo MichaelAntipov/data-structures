@@ -107,5 +107,30 @@ public class BinaryTree
     { 
         BinaryTree subtree = new BinaryTree();
         subtree.root = this.root.right;
-        return subtree;    }
+        return subtree;    
+    }
+
+    /**
+        Counts the number of nodes with exactly one child.
+        @return the number of nodes with exactly one child
+    */
+    public int countNodesWithOneChild() {
+        return countNodesWithOneChild(root);
+    }
+
+    /**
+        Helper method to count nodes with exactly one child in a subtree.
+        @param node the root of the subtree
+        @return the number of nodes with exactly one child
+    */
+    private int countNodesWithOneChild(Node node) {
+        if (node == null) {
+            return 0;
+        }
+        int count = 0;
+        if ((node.left == null && node.right != null) || (node.left != null && node.right == null)) {
+            count = 1;
+        }
+        return count + countNodesWithOneChild(node.left) + countNodesWithOneChild(node.right);
+    }
 }
