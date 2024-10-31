@@ -56,5 +56,32 @@ public class Tree
         return root.size();
     }
 
+    /**
+        Counts the number of leaves in this tree.
+        @return the number of leaf nodes in the tree
+    */
+    public int leafCount() {
+        return countLeaves(root);
+    }
+
+    /**
+        Recursive helper method to count the leaves starting from a given node.
+        @param node the starting node
+        @return the number of leaf nodes in the subtree rooted at this node
+    */
+    private int countLeaves(Node node) {
+        if (node == null) {
+            return 0;
+        }
+        if (node.children.isEmpty()) {
+            return 1;  // It's a leaf if it has no children
+        }
+        int leafCount = 0;
+        for (Node child : node.children) {
+            leafCount += countLeaves(child);
+        }
+        return leafCount;
+    }
+
     // Additional methods will be added in later sections.
 }

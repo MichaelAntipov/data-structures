@@ -117,6 +117,7 @@ public class BinaryTree
     public int countNodesWithOneChild() {
         return countNodesWithOneChild(root);
     }
+    
 
     /**
         Helper method to count nodes with exactly one child in a subtree.
