@@ -1,4 +1,3 @@
-import java.util.Iterator;
 
 /**
     This program demonstrates tree traversal.
@@ -14,9 +13,10 @@ public class TraversalDemo
         t1.addSubtree(t3);
         Tree t4 = new Tree("Savannah");
         t2.addSubtree(t4);
+        
 
         // Count short names with visitor
-        /*class ShortNameCounter implements Tree.Visitor
+        class ShortNameCounter implements Tree.Visitor
         {
             public int counter = 0;
             public void visit(Object data)
@@ -29,6 +29,6 @@ public class TraversalDemo
         ShortNameCounter v = new ShortNameCounter();
 
         t1.preorder(v);
-        System.out.println("Short names: " + v.counter);        */
+        System.out.println("Short names: " + v.counter);        
     }
 }
