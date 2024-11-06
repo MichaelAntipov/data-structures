@@ -121,4 +121,57 @@ public class Tree
             Tree.preorder(child, v);
         }
     }
+
+    /**
+     * Traverse this tree in depth-first order (preorder).
+     * @param v: The visitor to be invoked on each node.
+     */
+    public void depthFirst(Visitor v){
+        Tree.depthFirst(this.root, v);
+    }
+
+    /**
+     * Helper method to traverse the tree in depth-first order.
+     * @param n: The current node.
+     * @param v: The visitor to be invoked on each node.
+     */
+    private static void depthFirst(Node n, Visitor v){
+        if(n == null){
+            return;
+        }
+        v.visit(n.data); // Visit the node before its children (preorder)
+
+        for(Node child : n.children){
+            Tree.depthFirst(child, v);
+        }
+    }
+
+    /**
+     * Traverse this tree in postorder.
+     * @param v: The visitor to be invoked on each node.
+     */
+    public void postorder(Visitor v){
+        Tree.postorder(this.root, v);
+    }
+
+    /**
+     * Helper method to traverse the tree in postorder.
+     * @param n: The current node.
+     * @param v: The visitor to be invoked on each node.
+     */
+    private static void postorder(Node n, Visitor v){
+        if(n == null){
+            return;
+        }
+
+        for(Node child : n.children){
+            Tree.postorder(child, v);
+        }
+        v.visit(n.data); // Visit the node after its children
+    }
+
+
+
+
+
 }
