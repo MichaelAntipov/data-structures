@@ -71,9 +71,8 @@ public class MorseCode
      */
     private static void addSymbol(char letter, String code)
     {
-        /*
-            !!! INSERT CODE HERE
-        */
+        codeMap.put(letter, code);
+        treeInsert(letter, code);
     }
 
     /**
@@ -85,9 +84,22 @@ public class MorseCode
      */
     private static void treeInsert(char letter, String code)
     {
-        /*
-            !!! INSERT CODE HERE
-        */
+        TreeNode current = decodeTree;
+        for (int i = 0; i < code.length(); i++) {
+            char symbol = code.charAt(i);
+            if (symbol == DOT) {
+                if (current.getLeft() == null) {
+                    current.setLeft(new TreeNode(' '));
+                }
+                current = current.getLeft();
+            } else if (symbol == DASH) {
+                if (current.getRight() == null) {
+                    current.setRight(new TreeNode(' '));
+                }
+                current = current.getRight();
+            }
+        }
+        current.setValue(letter);
     }
 
     /**
@@ -98,13 +110,17 @@ public class MorseCode
      */
     public static String encode(String text)
     {
-        StringBuffer morse = new StringBuffer(400);
 
-        /*
-            !!! INSERT CODE HERE
-        */
+        StringBuilder morse = new StringBuilder();
+        for (char ch : text.toUpperCase().toCharArray()) {
+            if (ch == ' ') {
+                morse.append(" ");
+            } else if (codeMap.containsKey(ch)) {
+                morse.append(codeMap.get(ch)).append(" ");
+            }
+        }
 
-        return morse.toString();
+        return morse.toString().trim();
     }
 
     /**
@@ -115,13 +131,24 @@ public class MorseCode
      */
     public static String decode(String morse)
     {
-        StringBuffer text = new StringBuffer(100);
-
-        /*
-            !!! INSERT CODE HERE
-        */
-
-        return text.toString();
+        StringBuilder text = new StringBuilder();
+        String[] words = morse.split("   ");  // Split by 3 spaces for word separation
+        for (String word : words) {
+            String[] letters = word.split(" ");
+            for (String letter : letters) {
+                TreeNode current = decodeTree;
+                for (char symbol : letter.toCharArray()) {
+                    if (symbol == DOT) {
+                        current = current.getLeft();
+                    } else if (symbol == DASH) {
+                        current = current.getRight();
+                    }
+                }
+                text.append(current.getValue());
+            }
+            text.append(" ");
+        }
+        return text.toString().trim();
     }
 }
 
