@@ -170,8 +170,4 @@ public class Tree
         v.visit(n.data); // Visit the node after its children
     }
 
-
-
-
-
 }
